@@ -17,12 +17,12 @@ function TextInputForm({handleFormSubmit,handleTextInputChange,value,inputType,s
                     <Button
                     styleType="secondary"
                     text={inputType === 'text' ? "Hide" : "Show"}
-                    type="button"
+                    Buttontype="button"
                     onClickHandler={() => setInputType(inputType === 'text' ? 'password' : 'text')}/>
                     <Button
                     styleType="primary"
                     text="OK"
-                    type="Submit"/>
+                    Buttontype="Submit"/>
             </div>
         </form>
     )
