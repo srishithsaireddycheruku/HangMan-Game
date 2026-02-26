@@ -15,10 +15,13 @@ function TextInputForm({handleFormSubmit,handleTextInputChange,value,inputType,s
             </div>
             <div className="felx">
                     <Button
+                    style={{backgroundColor:'gray-500'}}
                     styleType="secondary"
                     text={inputType === 'text' ? "Hide" : "Show"}
                     Buttontype="button"
-                    onClickHandler={() => setInputType(inputType === 'text' ? 'password' : 'text')}/>
+                    onClickHandler={(event) =>{
+                        event.preventDefault();
+                    setInputType(inputType === 'text' ? 'password' : 'text')}}/>
                     <Button
                     styleType="primary"
                     text="OK"
