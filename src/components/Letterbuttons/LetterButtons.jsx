@@ -1,15 +1,15 @@
 import button from "../Button/Button";
 
 const alphabets=new Array(26).fill('').map((e,idx)=>String.fromCharCode(65+idx)); 
-function LetterButtons({usedLetters,onLetterClick}){    //taking the usesd letters to block tehm from using another time
-
+function LetterButtons({text="",usedLetters=[],onLetterClick}){    //taking the usesd letters to block tehm from using another time
+    const originalCharacters=new Set(text.toUpperCase().split(''));  //creating a set of original characters in the word to guess for faster lookup, as sets have O(1) time complexity for lookup, while arrays have O(n) time complexity
     const usedLettersSet=new Set(usedLetters.join('').toUpperCase().split(''));  //creating a set of used letters for faster lookup, as sets have O(1) time complexity for lookup, while arrays have O(n) time complexity
 
     const buttonStyle=function(letter){
         if(usedLettersSet.has(letter)){
-            return "bg-red-400 text-whitefont-bold py-2 px-4 rounded cursor-not-allowed";
+            return `${originalCharacters.has(letter) ? 'border-green-700 border-4 bg-green-500' : 'border-red-700 border-4 bg-red-500'} text-black font-bold py-2 px-4 rounded cursor-not-allowed`;
         }        else{
-            return "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-all border-2 border-blue-500 hover:border-blue-900";
+            return `bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-all border-2 border-blue-500 hover:border-blue-900`;
         }
     };
 

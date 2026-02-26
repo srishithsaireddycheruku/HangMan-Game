@@ -1,15 +1,38 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import MaskedText from "../../components/MaskedText/MaskedText";
 import LetterButtons from "../../components/Letterbuttons/LetterButtons";
+import HangMan from "../../components/HangMan/HangMan";
 function PlayGame(){
+    const location=useLocation();
+    const wordSelected=location.state?.wordSelected;
+    const [usedLetters,setUsedLetters]=useState([]);
+    const [step,setStep]=useState(0);
+
+    const handleLetterClick=function(letter){
+        if(wordSelected.toUpperCase().includes(letter)){
+            console.log('correct');
+        }else{
+            console.log('incorrect');
+            setStep(step+1);
+        }
+        setUsedLetters([...usedLetters,letter]);
+    }
     return(
         <div>
             <h1>Play Game</h1>
-                <MaskedText text="Humble" usedLetters={['b','e']}/>
+                <MaskedText text={wordSelected} usedLetters={usedLetters}/>
             <hr />
-            <LetterButtons usedLetters={['b','e']}/>
+            <div className="flex justify-between items-center">
+                <div className='basis-2/4'>
+                    <LetterButtons text={wordSelected} usedLetters={usedLetters} onLetterClick={handleLetterClick}/>
+                </div>
+                <div className='basis-2/4 flex justify-center'>
+                    <HangMan step={step}/>
+                </div>
+            </div>
             <hr />
-            <Link to="/start" > Go to Start Game</Link>
+            <Link to="/start" className="text-blue-600 underline hover:text-blue-700"> Go to Start Game</Link>
         </div>
     )
 }
