@@ -1,6 +1,5 @@
 import TextInputFormContainer from "../../components/TextInputForm/TextInputFormContainer";
-import { Link, useNavigate } from "react-router-dom";
-function StartGame(){
+import { Link, useNavigate } from "react-router-dom";function StartGame(){
 
     const navigate=useNavigate();
 
