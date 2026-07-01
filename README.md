@@ -1,64 +1,190 @@
-# React + Vite
+# 🎮 Hangman Game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple and interactive **Hangman Game** built with **React**, **React Router**, and **Tailwind CSS**. Players try to guess the hidden word one letter at a time before the hangman drawing is completed.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📌 Features
 
-## React Compiler
+- 🎯 Start a new game by entering a secret word.
+- 🔤 Guess letters using interactive alphabet buttons.
+- 👀 Hidden word is displayed with correctly guessed letters.
+- ❌ Incorrect guesses progressively draw the Hangman.
+- 🚦 React Router based navigation.
+- 🎨 Responsive UI using Tailwind CSS.
+- 🚫 Custom 404 page for invalid routes.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React
+- React Router DOM
+- Tailwind CSS
+- JavaScript (ES6+)
+- Vite
 
-# Hangman Game
+---
 
-A simple Hangman game built with React and React Router.
+## 📂 Project Structure
 
-## Project Structure
+```
+src/
+│
+├── components/
+│   ├── HangMan/
+│   ├── LetterButtons/
+│   ├── MaskedText/
+│   └── TextInputForm/
+│
+├── Pages/
+│   ├── PlayGame/
+│   └── StartGame/
+│
+├── App.jsx
+├── main.jsx
+└── index.css
+```
 
-- `src/Pages/` - Game pages (StartGame, PlayGame)
-- `src/components/` - Reusable components (TextInputForm)
-- `src/App.jsx` - Main routing component
+---
 
-## Routes
+## 🚀 Getting Started
 
-- `/` - Start game page (default route)
-- `/play` - Play game page
-- `/start` - Start game page
-- `*` - 404 not found page
+### Clone the repository
 
-## Features
+```bash
+git clone https://github.com/your-username/hangman-game.git
+```
 
-- Interactive hangman gameplay
-- Text input form for player guesses
-- Routing between game screens
+### Navigate to the project folder
 
+```bash
+cd hangman-game
+```
 
-- StartGame Component
-- 
-- A page component that serves as the entry point for initializing a new Hangman game.
-- 
-- This component renders a form where users can input or select a word to play with.
-- Once a word is submitted, the user is navigated to the game play page with the 
-- selected word passed via route state.
-- 
-- @component
-- @returns {JSX.Element} The start game page with title and word input form
-- 
-- @example
-- // Usage in router configuration
-- <Route path="/start" element={<StartGame />} />
-- 
-- @function handleSubmit
-- @param {string} value - The word selected/entered by the user
-- @description Logs the selected word and navigates to the play page, passing the word as state
+### Install dependencies
 
+```bash
+npm install
+```
 
+### Start the development server
 
+```bash
+npm run dev
+```
 
+The application will be available at:
 
+```
+http://localhost:5173
+```
+
+---
+
+## 🎮 How to Play
+
+1. Open the application.
+2. Navigate to the **Start Game** page.
+3. Enter the secret word.
+4. Click **Start Game**.
+5. Guess the hidden word by selecting letters.
+6. Each incorrect guess adds a new part to the Hangman.
+7. Guess the complete word before the Hangman is fully drawn.
+
+---
+
+## 🛣️ Routes
+
+| Route | Description |
+|--------|-------------|
+| `/` | Start Game page |
+| `/start` | Start Game page |
+| `/play` | Play Hangman |
+| `*` | 404 Not Found |
+
+---
+
+## 📸 Screens
+
+### Start Game
+- Enter the secret word.
+- Begin a new game.
+
+### Play Game
+- Hidden word display.
+- Alphabet letter buttons.
+- Hangman illustration.
+- Navigation back to Start Game.
+
+---
+
+## ⚙️ Components
+
+### TextInputForm
+- Accepts the secret word from the user.
+
+### MaskedText
+- Displays the hidden word using underscores.
+- Reveals correctly guessed letters.
+
+### LetterButtons
+- Displays alphabet buttons.
+- Prevents reuse of already selected letters.
+
+### HangMan
+- Displays the hangman drawing based on incorrect guesses.
+
+---
+
+## 📖 Game Logic
+
+- The secret word is passed from the **Start Game** page to the **Play Game** page using **React Router state**.
+- Every guessed letter is stored in the `usedLetters` state.
+- Correct guesses reveal matching letters.
+- Incorrect guesses increment the `step` state.
+- The Hangman component updates according to the current step.
+
+---
+
+## 📦 Future Improvements
+
+- Win and Lose screens
+- Score tracking
+- Difficulty levels
+- Random word generator using an API
+- Hint system
+- Keyboard support
+- Sound effects
+- Timer mode
+- Multiplayer mode
+- Restart game functionality
+
+---
+
+## 📚 Learning Outcomes
+
+This project demonstrates:
+
+- React Functional Components
+- React Hooks (`useState`)
+- React Router (`Routes`, `Route`, `Link`, `useLocation`)
+- Component-based architecture
+- State management
+- Props passing
+- Conditional rendering
+- Tailwind CSS styling
+
+---
+
+## 👨‍💻 Author
+
+**Srishith Sai Reddy Cheruku**
+
+GitHub: https://github.com/srishithsaireddycheruku
+
+---
+
+## 📄 License
+
+This project is created for learning purposes and is open-source under the MIT License.
